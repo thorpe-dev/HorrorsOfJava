@@ -7,7 +7,7 @@ package com.github.mt2309.horrors;
  * Time: 14:42
  * To change this template use File | Settings | File Templates.
  */
-public class MyClassGettersSettersConstructor extends MyClassGettersSetters {
+abstract class MyClassGettersSettersConstructor extends MyClassGettersSetters {
 
     public MyClassGettersSettersConstructor() {
         this.myName = "";
