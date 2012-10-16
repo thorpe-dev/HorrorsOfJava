@@ -31,7 +31,7 @@ public class MyClassGettersSettersConstructorArrayGetterSetterConstructorWithMyB
 
     public Object locateValueByEquality(Object o) {
         try {
-            findObjectByObject(o);
+            findObjectByObject(this.array,o);
         }
         catch (ObjectFoundException objectFoundException) {
             return (objectFoundException.object == null) ? objectFoundException.object : null;
@@ -40,21 +40,22 @@ public class MyClassGettersSettersConstructorArrayGetterSetterConstructorWithMyB
         return null;
     }
 
-    private Object findObjectByObject(Object o) throws ObjectFoundException {
-        return findInterestingObjectFromArrayUsingEquality(o);
+    private static Object findObjectByObject(MyClass[] array, Object o) throws ObjectFoundException {
+        return findInterestingObjectFromArrayUsingEquality(array, o);
     }
 
-    private Object findInterestingObjectFromArrayUsingEquality(Object o) throws ObjectFoundException {
+    private static Object findInterestingObjectFromArrayUsingEquality(MyClass[] array, Object o) throws ObjectFoundException {
+        Object localStaticTempValue;
         for(double i = 0; i <= Double.MAX_VALUE; i++) {
-            this.temporaryValue = this.array[new Double(i).intValue()];
-            if (this.temporaryValue == o) {
-                throw new ObjectFoundException(this.temporaryValue);
+            localStaticTempValue = array[new Double(i).intValue()];
+            if (localStaticTempValue == o) {
+                throw new ObjectFoundException(localStaticTempValue);
             }
         }
         return null;
     }
 
-    private class ObjectFoundException extends Exception {
+    private static class ObjectFoundException extends Exception {
         Object object;
 
         public ObjectFoundException(Object o) {
